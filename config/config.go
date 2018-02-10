@@ -6,7 +6,15 @@ import (
 )
 
 type GoKVConfig struct {
-	LogConfigPath	string	`yaml:"log_config_path"`
+	LogConfigPath string `yaml:"log_config_path"`
+	Mysql
+}
+
+type Mysql struct {
+	Host     string
+	User     string
+	Password string `yaml:"password"`
+	DBName   string `yaml:"dbname"`
 }
 
 var config GoKVConfig

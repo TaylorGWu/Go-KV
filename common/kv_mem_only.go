@@ -2,7 +2,7 @@ package common
 
 import (
 	"github.com/patrickmn/go-cache"
-	log "github.com/cihub/seelog"
+	"Go-KV/util"
 	"time"
 )
 
@@ -16,6 +16,7 @@ type MemOnlyOnMisser interface {
 }
 
 func (kv *KVMemOnly) Get(key string, object interface{}) (result interface{}, err error) {
+	log := *(util.Get())
 	// hit
 	if value, found := kv.Cache.Get(key); found {
 		result = value
