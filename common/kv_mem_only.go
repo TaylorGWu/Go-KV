@@ -9,6 +9,7 @@ import (
 type KVMemOnly struct {
 	Cache *cache.Cache
 	OnMisser MemOnlyOnMisser
+	// 其他需要的参数
 }
 
 type MemOnlyOnMisser interface {
