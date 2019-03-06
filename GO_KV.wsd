@@ -1,0 +1,34 @@
+@startuml
+Object Server {
+	KVApplication1
+}
+
+Object KVApplication1 {
+	attribute1
+	attribute2
+	KVMemOnly
+}
+
+Object KVMemOnly {
+	cache.Cache
+	MemOnlyOnMisser
+}
+
+Object cache.Cache {
+
+}
+
+Object MemOnlyOnMisser {
+	Object get()
+}
+
+Object KVApplication1MemOnlyOnMisser {
+	Object get()
+}
+
+Server "1" *--> "1" KVApplication1
+KVApplication1 "1" *--> "1" KVMemOnly
+KVMemOnly "1" *--> "1" MemOnlyOnMisser
+KVMemOnly "1" *--> "1" cache.Cache
+MemOnlyOnMisser <|-- KVApplication1MemOnlyOnMisser
+@enduml
